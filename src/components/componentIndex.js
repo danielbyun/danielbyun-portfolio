@@ -1,0 +1,10 @@
+export { default as About } from "./About";
+export { default as Copyright } from "./Copyright";
+export { default as DrawerList } from "./DrawerList";
+export { default as Footer } from "./Footer";
+export { default as Header } from "./Header";
+export { default as Main } from "./Main";
+export { default as ScrollTop } from "./ScrollTop";
+export { default as Web } from "./Web";
+export { default as Music } from "./Music";
+export { default as Resume } from "./Resume";

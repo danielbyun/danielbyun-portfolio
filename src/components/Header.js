@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   makeStyles,
@@ -15,6 +15,7 @@ import {
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import SettingsIcon from "@material-ui/icons/Settings";
+import { DrawerList } from "./componentIndex";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,8 +25,28 @@ const useStyles = makeStyles((theme) => ({
 
 const Header = () => {
   const classes = useStyles();
+  const [isDrawerOpened, setIsDrawerOpened] = useState(false);
 
-  return <div className={classes.root}>Header</div>;
+  const handleClose = () => {
+    setIsDrawerOpened(false);
+  };
+
+  const handleOpenDrawer = () => {
+    setIsDrawerOpened(!isDrawerOpened);
+  };
+
+  return (
+    <div className={classes.root}>
+      <AppBar position="static" color="default">
+        <Toolbar>
+          <IconButton onClick={handleOpenDrawer}>
+            <MenuIcon />
+          </IconButton>
+        </Toolbar>
+        <DrawerList open={isDrawerOpened} handleClose={handleClose} />
+      </AppBar>
+    </div>
+  );
 };
 
 export default Header;
