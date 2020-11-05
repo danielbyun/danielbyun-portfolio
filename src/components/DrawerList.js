@@ -25,22 +25,46 @@ const DrawerList = ({ open, handleClose }) => {
         </Typography>
         <Divider />
         <ListItem>
-          <Button fullWidth onClick={() => history.push("/web")}>
+          <Button
+            fullWidth
+            onClick={() => {
+              handleClose();
+              history.push("/web");
+            }}
+          >
             Web
           </Button>
         </ListItem>
         <ListItem>
-          <Button fullWidth onClick={() => history.push("/music")}>
+          <Button
+            fullWidth
+            onClick={() => {
+              handleClose();
+              history.push("/music");
+            }}
+          >
             Music
           </Button>
         </ListItem>
         <ListItem>
-          <Button fullWidth onClick={() => history.push("/about")}>
+          <Button
+            fullWidth
+            onClick={() => {
+              handleClose();
+              history.push("/about");
+            }}
+          >
             About
           </Button>
         </ListItem>
         <ListItem>
-          <Button fullWidth onClick={() => history.push("/resume")}>
+          <Button
+            fullWidth
+            onClick={() => {
+              handleClose();
+              history.push("/resume");
+            }}
+          >
             Resume
           </Button>
         </ListItem>

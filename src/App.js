@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
 const App = (props) => {
   const classes = useStyles();
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
-  const [darkMode, setDarkMode] = useState(prefersDarkMode);
+  const [darkMode, setDarkMode] = useState(true);
 
   const theme = useMemo(
     () =>
@@ -54,11 +54,18 @@ const App = (props) => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Router>
-        <div style={{ position: "absolute", top: 0, left: 0, height: "100vh" }}>
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            height: "100vh",
+            zIndex: -1,
+          }}
+        >
           <Particles
             params={{
               particles: {
-                color: darkMode ? "white" : "black",
                 number: {
                   value: 60,
                   density: {
@@ -67,7 +74,6 @@ const App = (props) => {
                   },
                 },
                 line_linked: {
-                  color: darkMode ? "white" : "black",
                   enable: true,
                   opacity: 0.02,
                 },
@@ -105,7 +111,7 @@ const App = (props) => {
         </div>
 
         <Header darkMode={darkMode} setDarkMode={setDarkMode} />
-        <Switch>
+        <Switch style={{ zIndex: 9999 }}>
           <Route exact path="/" component={Main} />
           <Route exact path="/web" component={Web} />
           <Route exact path="/music" component={Music} />
