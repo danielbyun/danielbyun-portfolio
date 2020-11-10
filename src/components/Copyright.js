@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 const useStyles = makeStyles({
   link: {
     textDecoration: "none",
+    color: "inherit",
     "&:hover": {
       textDecoration: "underline",
     },

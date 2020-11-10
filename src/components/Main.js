@@ -18,6 +18,7 @@ const Main = () => {
       <Typography variant="h2" style={{ letterSpacing: 5 }}>
         {NAME.toUpperCase()}
       </Typography>
+
       <Typography variant="h6">THE Full-Stack Web Developer</Typography>
       <Avatar alt="Profile Pic" src="" className={classes.large} />
       <Grid item container xs={5} sm={5} md={5} lg={5}>

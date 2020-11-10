@@ -6,12 +6,24 @@ import {
   Drawer,
   List,
   ListItem,
+  makeStyles,
   Typography,
 } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 
+const useStyles = makeStyles({
+  homeLink: {
+    margin: "1rem",
+    "&:hover": {
+      cursor: "pointer",
+      textDecoration: "underline",
+    },
+  },
+});
+
 const DrawerList = ({ open, handleClose }) => {
   const history = useHistory();
+  const classes = useStyles();
 
   return (
     <Drawer open={open} onClose={handleClose}>
@@ -19,7 +31,11 @@ const DrawerList = ({ open, handleClose }) => {
         <Typography
           variant="h5"
           color="textSecondary"
-          style={{ margin: "1rem" }}
+          className={classes.homeLink}
+          onClick={() => {
+            handleClose();
+            history.push("/");
+          }}
         >
           Daniel Byun
         </Typography>

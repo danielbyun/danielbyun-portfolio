@@ -3,19 +3,22 @@ import React, { useState } from "react";
 import {
   makeStyles,
   AppBar,
-  Button,
-  Divider,
-  Grid,
+  // Button,
+  // Divider,
+  // Grid,
   IconButton,
-  MenuItem,
-  Popover,
-  Switch,
+  // MenuItem,
+  // Popover,
+  // Switch,
   Toolbar,
-  Typography,
+  Fab,
+  // Typography,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
-import SettingsIcon from "@material-ui/icons/Settings";
+// import SettingsIcon from "@material-ui/icons/Settings";
 import { DrawerList } from "./componentIndex";
+import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
+import ScrollTop from "./ScrollTop";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Header = () => {
+const Header = (props) => {
   const classes = useStyles();
   const [isDrawerOpened, setIsDrawerOpened] = useState(false);
 
@@ -38,13 +41,18 @@ const Header = () => {
   return (
     <div className={classes.root}>
       <AppBar position="static" color="default">
-        <Toolbar>
+        <Toolbar id="back-to-top-anchor">
           <IconButton onClick={handleOpenDrawer}>
             <MenuIcon />
           </IconButton>
         </Toolbar>
         <DrawerList open={isDrawerOpened} handleClose={handleClose} />
       </AppBar>
+      <ScrollTop {...props}>
+        <Fab color="primary" size="small" aria-label="scroll back to top">
+          <KeyboardArrowUpIcon />
+        </Fab>
+      </ScrollTop>
     </div>
   );
 };
