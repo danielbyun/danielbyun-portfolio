@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import clsx from "clsx";
 
 import {
@@ -96,7 +96,10 @@ const Web = () => {
           </CardContent>
           <CardActions disableSpacing>
             <Tooltip placement="bottom" title="Go to demo">
-              <IconButton aria-label="go to demo">
+              <IconButton
+                aria-label="go to demo"
+                onClick={() => window.open(project.link, "_blank")}
+              >
                 {project.link !== "" ? <SendIcon /> : undefined}
               </IconButton>
             </Tooltip>

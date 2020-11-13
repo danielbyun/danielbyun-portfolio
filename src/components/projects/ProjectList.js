@@ -9,6 +9,7 @@ export const projects = [
     longSummary: "How should do this",
     images: [],
     tags: [],
+    githubLink: "",
   },
   {
     id: 1,

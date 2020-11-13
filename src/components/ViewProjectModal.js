@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 import {
+  Collapse,
   Divider,
   IconButton,
   makeStyles,
@@ -9,6 +11,9 @@ import {
   Typography,
 } from "@material-ui/core";
 import SendIcon from "@material-ui/icons/Send";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+
+import clsx from "clsx";
 
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
@@ -30,7 +35,17 @@ const useStyles = makeStyles((theme) => ({
   },
   divider: {
     width: "100%",
-    // margin: "1rem auto",
+    margin: "1rem auto",
+  },
+  expand: {
+    transform: "rotate(0deg)",
+    marginLeft: "auto",
+    transition: theme.transitions.create("transform", {
+      duration: theme.transitions.duration.shortest,
+    }),
+  },
+  expandOpen: {
+    transform: "rotate(180deg)",
   },
 }));
 
@@ -45,7 +60,7 @@ const getModalStyle = () => {
     left: `${left}%`,
     transform: `translate(-${top}%, -${left}%)`,
     width: "600px",
-    height: "80%",
+    maxHeight: "80%",
     maxWidth: "100%",
     overflowY: "auto",
     display: "flex",
@@ -57,6 +72,11 @@ const getModalStyle = () => {
 const ViewProjectModal = ({ project, open, handleClose }) => {
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
+  const [expanded, setExpanded] = useState(false);
+
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
 
   return (
     <Modal
@@ -88,13 +108,34 @@ const ViewProjectModal = ({ project, open, handleClose }) => {
         >
           CAROUSEL
         </div>
-        <Typography variant="subtitle2">{project.shortSummary}</Typography>
-        <Divider className={classes.divider} />
+
         <Tooltip placement="bottom" title="Go to demo">
-          <IconButton aria-label="go to demo">
-            {project.link !== "" ? <SendIcon /> : undefined}
-          </IconButton>
+          {project.link !== "" ? (
+            <IconButton
+              component={Link}
+              to={project.link}
+              aria-label="go to demo"
+            >
+              <SendIcon />
+            </IconButton>
+          ) : (
+            <></>
+          )}
         </Tooltip>
+        <IconButton
+          className={clsx(classes.expand, {
+            [classes.expandOpen]: expanded,
+          })}
+          onClick={handleExpandClick}
+          aria-expanded={expanded}
+          aria-label="show more"
+        >
+          <ExpandMoreIcon />
+        </IconButton>
+        <Divider className={classes.divider} />
+        <Collapse in={expanded} timeout="auto" unmountOnExit>
+          <Typography variant="subtitle2">{project.shortSummary}</Typography>
+        </Collapse>
       </div>
     </Modal>
   );
