@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import {
@@ -72,29 +72,27 @@ const getModalStyle = () => {
 const ViewProjectModal = ({ project, open, handleClose }) => {
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(null);
 
   const handleExpandClick = () => {
-    setExpanded(!expanded);
+    expanded === project.id ? setExpanded(null) : setExpanded(project.id);
   };
 
   return (
     <Modal
       className={classes.modal}
-      open={open}
+      open={open === project.id}
       onClose={handleClose}
-      disableAutoFocus
-    >
+      disableAutoFocus>
       <div style={modalStyle} className={classes.paper}>
         <Typography
-          variant="h6"
-          color="textPrimary"
-          style={{ width: "100%", textAlign: "center" }}
-        >
+          variant='h6'
+          color='textPrimary'
+          style={{ width: "100%", textAlign: "center" }}>
           {project.title}
         </Typography>
         <Divider className={classes.divider} />
-        <Typography variant="subtitle2">{project.shortSummary}</Typography>
+        <Typography variant='subtitle2'>{project.shortSummary}</Typography>
         <div
           style={{
             width: "100%",
@@ -104,18 +102,16 @@ const ViewProjectModal = ({ project, open, handleClose }) => {
             alignItems: "center",
             border: "1px solid red",
             margin: "1rem auto",
-          }}
-        >
+          }}>
           CAROUSEL
         </div>
 
-        <Tooltip placement="bottom" title="Go to demo">
-          {project.link !== "" ? (
+        <Tooltip placement='bottom' title='Go to demo'>
+          {project.demoLink !== "" ? (
             <IconButton
               component={Link}
-              to={project.link}
-              aria-label="go to demo"
-            >
+              to={project.demoLink}
+              aria-label='go to demo'>
               <SendIcon />
             </IconButton>
           ) : (
@@ -124,17 +120,16 @@ const ViewProjectModal = ({ project, open, handleClose }) => {
         </Tooltip>
         <IconButton
           className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
+            [classes.expandOpen]: expanded === project.id,
           })}
           onClick={handleExpandClick}
           aria-expanded={expanded}
-          aria-label="show more"
-        >
+          aria-label='show more'>
           <ExpandMoreIcon />
         </IconButton>
         <Divider className={classes.divider} />
-        <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <Typography variant="subtitle2">{project.shortSummary}</Typography>
+        <Collapse in={expanded === project.id} timeout='auto' unmountOnExit>
+          <Typography variant='subtitle2'>{project.shortSummary}</Typography>
         </Collapse>
       </div>
     </Modal>
