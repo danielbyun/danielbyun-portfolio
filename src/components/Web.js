@@ -8,6 +8,7 @@ import {
   CardContent,
   CardHeader,
   CardMedia,
+  Chip,
   Grid,
   IconButton,
   makeStyles,
@@ -58,6 +59,12 @@ const useStyles = makeStyles((theme) => ({
       cursor: "pointer",
     },
   },
+  chips: {
+    margin: "1rem",
+  },
+  chip: {
+    margin: 5,
+  },
 }));
 
 const Web = () => {
@@ -70,13 +77,7 @@ const Web = () => {
   };
 
   useEffect(() => {
-    projects.forEach((project) => {
-      if (project.tags) {
-        if (project.tags.length > 0) {
-          console.log(project.tags);
-        }
-      }
-    });
+    console.log(projects);
   }, []);
 
   return (
@@ -108,7 +109,7 @@ const Web = () => {
           />
           <CardMedia
             className={clsx([classes.media, classes.body])}
-            image='/static/images/cards/paella.jpg'
+            image={String(project.thumbnail)}
             title='Paella dish'
             onClick={() => {
               setOpen(project.id);
@@ -120,18 +121,28 @@ const Web = () => {
               Short summary:
             </Typography>
             <Typography variant='body2' color='textSecondary' component='p'>
-              {project.shortSummary}
+              {project.nestedShortSummary ? "" : project.shortSummary}
             </Typography>
+
+            <Grid className={classes.chips}>
+              {project.tags.map((tag) => (
+                <Chip
+                  variant='outlined'
+                  label={tag}
+                  key={tag}
+                  className={classes.chip}
+                />
+              ))}
+              <br />
+              <Tooltip placement='bottom' title='Go to demo'>
+                <IconButton
+                  aria-label='go to demo'
+                  onClick={() => window.open(project.demoLink, "_blank")}>
+                  {project.demoLink !== "" ? <SendIcon /> : undefined}
+                </IconButton>
+              </Tooltip>
+            </Grid>
           </CardContent>
-          <CardActions disableSpacing>
-            <Tooltip placement='bottom' title='Go to demo'>
-              <IconButton
-                aria-label='go to demo'
-                onClick={() => window.open(project.demoLink, "_blank")}>
-                {project.demoLink !== "" ? <SendIcon /> : undefined}
-              </IconButton>
-            </Tooltip>
-          </CardActions>
         </Card>
       ))}
       <ViewProjectModal

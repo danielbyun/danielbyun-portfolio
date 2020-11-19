@@ -1,12 +1,12 @@
-import { makeStyles, Typography } from "@material-ui/core";
 import React from "react";
-import { Link } from "react-router-dom";
+import { makeStyles, Typography } from "@material-ui/core";
 
 const useStyles = makeStyles({
   link: {
     textDecoration: "none",
     color: "inherit",
     "&:hover": {
+      cursor: "pointer",
       textDecoration: "underline",
     },
   },
@@ -15,15 +15,18 @@ const useStyles = makeStyles({
 const Copyright = () => {
   const classes = useStyles();
   return (
-    <Typography variant="body2" color="textSecondary">
+    <Typography variant='subtitle2' color='textSecondary'>
       {"Copyright © "}
-      <Link
+      <Typography
+        component='span'
+        variant='subtitle2'
         className={classes.link}
-        color="inherit"
-        to="https://material-ui.com/"
-      >
+        color='inherit'
+        onClick={() =>
+          window.open("https://www.linkedin.com/in/danielhbyun/", "_blank")
+        }>
         Daniel Byun
-      </Link>{" "}
+      </Typography>{" "}
       {new Date().getFullYear()}
       {"."}
     </Typography>

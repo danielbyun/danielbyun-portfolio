@@ -1,6 +1,9 @@
 import React from "react";
-import { Container, makeStyles, Typography } from "@material-ui/core";
 import { Copyright } from "./componentIndex";
+
+import { Container, Grid, makeStyles, Typography } from "@material-ui/core";
+import GitHubIcon from "@material-ui/icons/GitHub";
+import LinkedInIcon from "@material-ui/icons/LinkedIn";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,10 +30,18 @@ const Footer = () => {
 
   return (
     <footer className={classes.footer}>
-      <Container maxWidth="sm">
-        <Typography variant="body1">
-          My sticky footer can be found here.
+      <Container maxWidth='sm'>
+        <Typography variant='subtitle2' color='textSecondary'>
+          Hello - is it me you're looking for?
         </Typography>
+        <Grid>
+          <GitHubIcon
+            color='action'
+            fontSize='small'
+            style={{ margin: "5 0.5rem 0 0" }}
+          />
+          <LinkedInIcon color='action' fontSize='small' />
+        </Grid>
         <Copyright />
       </Container>
     </footer>
