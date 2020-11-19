@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import clsx from "clsx";
 
 import {
@@ -68,6 +68,16 @@ const Web = () => {
   const onChildClick = () => {
     setOpen(null);
   };
+
+  useEffect(() => {
+    projects.forEach((project) => {
+      if (project.tags) {
+        if (project.tags.length > 0) {
+          console.log(project.tags);
+        }
+      }
+    });
+  }, []);
 
   return (
     <Grid
