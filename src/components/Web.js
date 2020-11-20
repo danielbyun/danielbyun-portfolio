@@ -4,7 +4,6 @@ import clsx from "clsx";
 import {
   Avatar,
   Card,
-  CardActions,
   CardContent,
   CardHeader,
   CardMedia,
@@ -52,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     transform: "rotate(180deg)",
   },
   avatar: {
-    backgroundColor: red[500],
+    // backgroundColor: red[500],
   },
   body: {
     "&:hover": {
@@ -77,7 +76,7 @@ const Web = () => {
   };
 
   useEffect(() => {
-    console.log(projects);
+    // console.log(projects);
   }, []);
 
   return (

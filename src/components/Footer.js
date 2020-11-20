@@ -1,7 +1,14 @@
 import React from "react";
+
 import { Copyright } from "./componentIndex";
 
-import { Container, Grid, makeStyles, Typography } from "@material-ui/core";
+import {
+  Container,
+  Grid,
+  IconButton,
+  makeStyles,
+  Typography,
+} from "@material-ui/core";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 
@@ -35,12 +42,19 @@ const Footer = () => {
           Hello - is it me you're looking for?
         </Typography>
         <Grid>
-          <GitHubIcon
-            color='action'
-            fontSize='small'
-            style={{ margin: "5 0.5rem 0 0" }}
-          />
-          <LinkedInIcon color='action' fontSize='small' />
+          <IconButton
+            onClick={() =>
+              window.open("https://github.com/danielbyun", "_blank")
+            }>
+            <GitHubIcon color='action' fontSize='small' />
+          </IconButton>
+
+          <IconButton
+            onClick={() =>
+              window.open("https://www.linkedin.com/in/danielhbyun/", "_blank")
+            }>
+            <LinkedInIcon color='action' fontSize='small' />
+          </IconButton>
         </Grid>
         <Copyright />
       </Container>

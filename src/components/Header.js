@@ -40,8 +40,8 @@ const Header = (props) => {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="default">
-        <Toolbar id="back-to-top-anchor">
+      <AppBar position='static' color='default'>
+        <Toolbar id='back-to-top-anchor'>
           <IconButton onClick={handleOpenDrawer}>
             <MenuIcon />
           </IconButton>
@@ -49,7 +49,7 @@ const Header = (props) => {
         <DrawerList open={isDrawerOpened} handleClose={handleClose} />
       </AppBar>
       <ScrollTop {...props}>
-        <Fab color="primary" size="small" aria-label="scroll back to top">
+        <Fab color='action' size='small' aria-label='scroll back to top'>
           <KeyboardArrowUpIcon />
         </Fab>
       </ScrollTop>

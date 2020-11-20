@@ -9,18 +9,6 @@ import {
   flowerStoreAssets,
 } from "../utils/assets";
 
-console.log(
-  covidAssets,
-  devConnectorAssets,
-  ecommerceAssets,
-  chatAssets,
-  ppmToolAssets,
-  materialAssets,
-  flowerStoreAssets
-);
-
-console.log(covidAssets["covidTrackerThumb.png"]);
-
 export const projects = [
   {
     id: uuidv4(),

@@ -18,6 +18,16 @@ import clsx from "clsx";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 
+import {
+  covidAssets,
+  devConnectorAssets,
+  ecommerceAssets,
+  chatAssets,
+  ppmToolAssets,
+  materialAssets,
+  flowerStoreAssets,
+} from "./utils/assets";
+
 const useStyles = makeStyles((theme) => ({
   paper: {
     position: "absolute",
@@ -77,6 +87,22 @@ const ViewProjectModal = ({ project, open, handleClose }) => {
   const handleExpandClick = () => {
     expanded === project.id ? setExpanded(null) : setExpanded(project.id);
   };
+
+  useEffect(() => {
+    console.log(
+      covidAssets,
+      devConnectorAssets,
+      ecommerceAssets,
+      chatAssets,
+      ppmToolAssets,
+      materialAssets,
+      flowerStoreAssets
+    );
+
+    Object.values(covidAssets).forEach((value) => {
+      console.log(value.default);
+    });
+  }, []);
 
   return (
     <Modal
