@@ -63,3 +63,10 @@ export const flowerStoreAssets = importAll(
     /\.(png|jpe?g|svg|gif)$/
   )
 );
+
+export const getExtension = (url) => {
+  if (!url) return;
+  const re = /(?:\.([^.]+))?$/;
+
+  return re.exec(url)[1];
+};

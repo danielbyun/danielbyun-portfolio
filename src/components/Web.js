@@ -14,7 +14,6 @@ import {
   Tooltip,
   Typography,
 } from "@material-ui/core";
-import { red } from "@material-ui/core/colors";
 
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import SendIcon from "@material-ui/icons/Send";
@@ -109,7 +108,7 @@ const Web = () => {
           <CardMedia
             className={clsx([classes.media, classes.body])}
             image={String(project.thumbnail)}
-            title='Paella dish'
+            title='Project Thumbnail'
             onClick={() => {
               setOpen(project.id);
               setCurrentProject(project);

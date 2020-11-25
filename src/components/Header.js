@@ -49,7 +49,7 @@ const Header = (props) => {
         <DrawerList open={isDrawerOpened} handleClose={handleClose} />
       </AppBar>
       <ScrollTop {...props}>
-        <Fab color='action' size='small' aria-label='scroll back to top'>
+        <Fab size='small' aria-label='scroll back to top'>
           <KeyboardArrowUpIcon />
         </Fab>
       </ScrollTop>
